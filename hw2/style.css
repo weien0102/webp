@@ -1,0 +1,20 @@
+body
+{
+    background-color:silver
+}
+h1
+{
+    background-color:burlywood
+}
+p{
+    color:brown
+}
+h3
+{
+    color:red
+}
+@media(min-width:480px)
+{
+    font-size:200%;
+}    
+   
