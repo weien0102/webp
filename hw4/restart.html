@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>B0929058許維恩HW4</title>
+    <!-- 連結JQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+ <style>
+ div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+}
+body {
+text-align: center;
+}
+h1.set{display:inline}
+button.set{display:inline}
+p.set{display:inline}
+</style>
+</head>
+
+<body>
+        <h1 class="set">TypingGame!</h1>
+        <button id="start"class="set">開始遊戲</button>
+        <p class="set">分數:</p>
+        <h1 id="score_id"class="set">0</h1>
+<hr>
+<canvas id="way1"class="way" width="1200px" height="100px"></canvas>
+<canvas id="way2"class="way" width="1200px" height="100px"></canvas>
+<canvas id="way3"class="way" width="1200px" height="100px"></canvas>
+<canvas id="way4"class="way" width="1200px" height="100px"></canvas>
+<canvas id="way5"class="way" width="1200px" height="100px"></canvas>
+<canvas id="way6"class="way" width="1200px" height="100px"></canvas>
+
+    <script>
+var BLOCK_SIZE = 12
+var BLOCK_COUNT = 0
+var gameIterval
+var topic1=["A"]
+var topic2=["A"]
+var topic3=["A"]
+var topic4=["A"]
+var topic5=["A"]
+var topic6=["A"]
+var answer=["A"]
+    // declear A-Z array
+    const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+    const alphabet = alpha.map((x) => String.fromCharCode(x));
+    //產生亂數
+    function getRandom(x){
+        return Math.floor(Math.random()*x)
+    }
+    //遊戲開始
+    $("#start").click(function(){
+        //picture
+        picture={
+            body:[
+                {x:0,y:0}
+            ],
+            size:1
+            ,
+            direction:{x:1,y:0}
+        }
+        addLoadEvent(preloader);
+        //算分數
+        updateScore(0)
+        //間隔一秒
+        gameIterval=setInterval(gameRoutine,100)
+    })
+    //遊戲程序
+    var time=0;
+    function gameRoutine(){
+        
+        movepic(time)
+        if(time>111){
+                ggler()
+                return
+        }
+        clearCanvas()
+        updateCanvas()
+        /*generateTopic(topic,time)
+        offset(topic1,answer)
+        offset(topic2,answer)
+        offset(topic3,answer)
+        offset(topic4,answer)
+        offset(topic5,answer)
+        offset(topic6,answer)*/
+        time++;
+    }
+    //prelosd img
+function preloader() {
+        if (document.images) {
+                var A= new Image();
+                var B = new Image();
+                var C = new Image();
+                var D= new Image();
+                var E = new Image();
+                var F = new Image();
+                var G= new Image();
+                var H = new Image();
+                var I = new Image();
+                var J= new Image();
+                var K = new Image();
+                var L = new Image();
+                var M= new Image();
+                var N = new Image();
+                var O = new Image();
+                var P= new Image();
+                var Q= new Image();
+                var R = new Image();
+                var S= new Image();
+                var T = new Image();
+                var U = new Image();
+                var V= new Image();
+                var W = new Image();
+                var X = new Image();
+                var Y= new Image();
+                var Z = new Image();
+                A.src = "A.jpg";
+                B.src = "B.jpg";
+                C.src = "C.jpg";
+                D.src = "D.jpg";
+                E.src = "E.jpg";
+                F.src = "F.jpg";
+                G.src = "G.jpg";
+                H.src = "H.jpg";
+                I.src = "I.jpg";
+                J.src = "J.jpg";
+                K.src = "K.jpg";
+                L.src = "L.jpg";
+                M.src = "M.jpg";
+                N.src = "N.jpg";
+                O.src = "O.jpg";
+                P.src = "P.jpg";
+                Q.src = "Q.jpg";
+                R.src = "R.jpg";
+                S.src = "S.jpg";
+                T.src = "T.jpg";
+                U.src = "U.jpg";
+                V.src = "V.jpg";
+                W.src = "W.jpg";
+                X.src = "X.jpg";
+                Y.src = "Y.jpg";
+                Z.src = "Z.jpg";                
+        }
+}
+function addLoadEvent(func) {
+        var oldonload = window.onload;
+        if (typeof window.onload != 'function') {
+                window.onload = func;
+        } else {
+                window.onload = function() {
+                        if (oldonload) {
+                                oldonload();
+                        }
+                        func();
+                }
+        }
+}
+addLoadEvent(preloader);
+    //move picture
+    function movepic(s){
+        if(s%10===0){        
+        var newBlock={
+            x:picture.body[0].x+picture.direction.x,y:0
+        }
+        picture.body.unshift(newBlock)
+
+        while(picture.body.length>picture.size){
+            picture.body.pop()
+        }
+   }
+ }    
+//顯示跑道
+var elements=$('.way'); 
+  for (var i = 0; i < elements.length; i++) { 
+            elements[i].style.backgroundColor='black'; 
+            elements[i].style.border="2px solid gold"; 
+}
+//顯示字母
+        const canvas = document.getElementById('way1');
+        const ctx = canvas.getContext('2d');
+        const image = new Image();
+        image.onload = drawImageletter;
+        image.src = 'B.jpg';
+
+function updateCanvas() {
+    const canvas = document.getElementById('way1');
+        const ctx = canvas.getContext('2d');
+        const image = new Image();
+        image.onload = drawImageletter;
+        image.src = 'B.jpg';
+ 
+}
+//DRAW
+function drawImageletter() {
+  // Use the intrinsic size of image in CSS pixels for the canvas element
+    ctx.drawImage(this, 0+time*10,0,90,90);
+   
+}
+
+//重整canvas
+function clearCanvas()
+{  
+    var c=document.getElementById("way1");  
+    var cxt=c.getContext("2d");  
+    c.height=c.height;  
+}
+    //更新分數
+function updateScore(newScore) {
+        score = newScore
+        $("#score_id").html(score)
+    }
+    //鍵盤連結
+    window.onload = onPageLoaded
+function onPageLoaded() {
+    document.addEventListener('keydown', handleKeyDown)
+    }
+    //按下鍵盤這事發生
+    function handleKeyDown(event) {
+    var order
+    for (order = 0; order < 26; order++) {
+        if (event.keyCode === 65+order) {//鍵盤對應字母加入answer的第一格
+        answer.unshift(alphabet[order])
+        }
+    }  //把相同消除
+    offset(topic1,answer)
+    offset(topic2,answer)
+    offset(topic3,answer)
+    offset(topic4,answer)
+    offset(topic5,answer)
+    offset(topic6,answer)
+    }
+    //產生隨機陣列
+    function generateTopic(array,count){
+        var modfortime//計算時間用的一次0.1秒
+        modfortime=2;//2秒一次
+        if((count)%(modfortime*10)===0){
+        array.push(alphabet[getRandom(26)])
+        }
+    }
+    //相同相消
+    function offset(a,b){
+        if(a[0]===b[0]&&b!= !!undefined){//b要不等於undefined
+            a.shift()
+            updateScore(score+1)        
+        }    
+    }
+
+    //GG了
+function ggler() {
+  clearInterval(gameInterval)
+}
+    </script>
+ 
+</body>
+</html>

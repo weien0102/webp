@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>B0929058許維恩HW4</title>
+    <!-- 連結JQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+ <style>
+        /*初始*/
+        img {
+            position: absolute;
+            left: 168px;
+            width: 80px;
+            height: 80px;
+        }
+
+        body {
+        text-align: center;
+        }
+        h1.set{display:inline}
+        button.set{display:inline}
+        p.set{display:inline}
+</style>
+
+</head>
+
+<body>
+        <div class="line"></div>
+        <h1 class="set">TypingGame!</h1>
+        <button id="start"class="set">開始遊戲</button>
+        <p class="set">分數:</p>
+        <h1 id="score_id"class="set">0</h1>
+        
+<hr>
+<canvas id="way1"class="way" width="1200px" height="100px"></canvas>
+<div id="a1"></div>
+<canvas id="way2"class="way" width="1200px" height="100px"></canvas>
+<div id="a2" ></div>
+<canvas id="way3"class="way" width="1200px" height="100px"></canvas>
+<div id="a3" ></div>
+<canvas id="way4"class="way" width="1200px" height="100px"></canvas>
+<div id="a4" ></div>
+<canvas id="way5"class="way" width="1200px" height="100px"></canvas>
+<div id="a5" ></div>
+<canvas id="way6"class="way" width="1200px" height="100px"></canvas>
+<div id="a6" ></div>
+<script type="text/javascript">
+    var t1;
+    var gamespeed=20000;
+    //row1
+    $(document).click(function () {
+        t1 = setInterval(function () {
+            var str = Math.floor((Math.random() * (26)) + 65);
+            $("#a1").prepend('<img src="' + String.fromCharCode(str).toUpperCase() + '.jpg" id="' + str + '" class="row1" /> ');
+            $("#" + str).css({"top":70});
+            $("#" + str).animate({
+                left: '1290px'
+            }, gamespeed);
+            setInterval(function () {
+                if ($(".row1").last().offset().left > 1289) {
+                    $("img").stop(true);
+                    clearInterval(t1);
+                    alert("GameOver");
+                }
+            }, 1);
+            
+        }, 1000);
+    })
+    $(document).keydown(function (e) {
+        if ($(".row1").last().attr("id") == (e.keyCode)) {
+            $(".row1").last().remove();
+            updateScore(score+1)
+        }
+    }); 
+    //row2 
+    $(document).click(function () {
+        t1 = setInterval(function () {
+            var str = Math.floor((Math.random() * (26)) + 65);
+            $("#a2").prepend('<img src="' + String.fromCharCode(str).toUpperCase() + '.jpg" id="' + str + '" class="row2" /> ');
+            $("#" + str).css({"top":177});
+            $("#" + str).animate({
+                left: '1290px'
+            }, gamespeed);
+            setInterval(function () {
+                if ($(".row2").last().offset().left > 1289) {
+                    $("img").stop(true);
+                    clearInterval(t1);
+                    alert("GameOver");
+                }
+            }, 1);
+            
+        }, 1000);
+    })
+    $(document).keydown(function (e) {
+        if ($(".row2").last().attr("id") == (e.keyCode)) {
+            $(".row2").last().remove();
+            updateScore(score+1)
+        }
+    });    
+    //row3
+    $(document).click(function () {
+        t1 = setInterval(function () {
+            var str = Math.floor((Math.random() * (26)) + 65);
+            $("#a3").prepend('<img src="' + String.fromCharCode(str).toUpperCase() + '.jpg" id="' + str + '" class="row3" /> ');
+            $("#" + str).css({"top":287});
+            $("#" + str).animate({
+                left: '1290px'
+            }, gamespeed);
+            setInterval(function () {
+                if ($(".row3").last().offset().left > 1289) {
+                    $("img").stop(true);
+                    clearInterval(t1);
+                    alert("GameOver");
+                }
+            }, 1);
+            
+        }, 1000);
+    })
+    $(document).keydown(function (e) {
+        if ($(".row3").last().attr("id") == (e.keyCode)) {
+            $(".row3").last().remove();
+            updateScore(score+1)
+        }
+    }); 
+    //row4
+    $(document).click(function () {
+        t1 = setInterval(function () {
+            var str = Math.floor((Math.random() * (26)) + 65);
+            $("#a4").prepend('<img src="' + String.fromCharCode(str).toUpperCase() + '.jpg" id="' + str + '" class="row4" /> ');
+            $("#" + str).css({"top":397});
+            $("#" + str).animate({
+                left: '1290px'
+            }, gamespeed);
+            setInterval(function () {
+                if ($(".row4").last().offset().left > 1289) {
+                    $("img").stop(true);
+                    clearInterval(t1);
+                    alert("GameOver");
+                }
+            }, 1);
+            
+        }, 1000);
+    })
+    $(document).keydown(function (e) {
+        if ($(".row4").last().attr("id") == (e.keyCode)) {
+            $(".row4").last().remove();
+            updateScore(score+1)
+        }
+    });
+    //row5
+    $(document).click(function () {
+        t1 = setInterval(function () {
+            var str = Math.floor((Math.random() * (26)) + 65);
+            $("#a5").prepend('<img src="' + String.fromCharCode(str).toUpperCase() + '.jpg" id="' + str + '" class="row5" /> ');
+            $("#" + str).css({"top":507});
+            $("#" + str).animate({
+                left: '1290px'
+            }, gamespeed);
+            setInterval(function () {
+                if ($(".row5").last().offset().left > 1289) {
+                    $("img").stop(true);
+                    clearInterval(t1);
+                    alert("GameOver");
+                }
+            }, 1);
+            
+        }, 1000);
+    })
+    $(document).keydown(function (e) {
+        if ($(".row5").last().attr("id") == (e.keyCode)) {
+            $(".row5").last().remove();
+            updateScore(score+1)
+        }
+    });
+    //row6
+    $(document).click(function () {
+        t1 = setInterval(function () {
+            var str = Math.floor((Math.random() * (26)) + 65);
+            $("#a6").prepend('<img src="' + String.fromCharCode(str).toUpperCase() + '.jpg" id="' + str + '" class="row6" /> ');
+            $("#" + str).css({"top":617});
+            $("#" + str).animate({
+                left: '1290px'
+            }, gamespeed);
+            setInterval(function () {
+                if ($(".row6").last().offset().left > 1289) {
+                    $("img").stop(true);
+                    clearInterval(t1);
+                    alert("GameOver");
+                }
+            }, 1);
+            
+        }, 1000);
+    })
+    $(document).keydown(function (e) {
+        if ($(".row6").last().attr("id") == (e.keyCode)) {
+            $(".row6").last().remove();
+            updateScore(score+1)
+        }
+    });
+    //顯示跑道
+    var elements=$('.way'); 
+    for (var i = 0; i < elements.length; i++) { 
+            elements[i].style.backgroundColor='black'; 
+            elements[i].style.border="2px solid gold"; 
+    }
+        //更新分數
+        var score=0;
+function updateScore(newScore) {
+        score = newScore
+        $("#score_id").html(score)
+    }
+</script>
+</body>
+</html>
